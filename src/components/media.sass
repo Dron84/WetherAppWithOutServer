@@ -1,0 +1,37 @@
+@media screen and (min-width: 650px)
+  .weather_info
+    padding: 0 100px
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    position: relative
+  .city
+    padding: 75px 80px
+  .weather
+    max-width: 475px
+    width: 100%
+@media screen and (max-width: 649px)
+  .weather_info
+    padding: 0 22px
+    bottom: 40px
+    grid-template-columns: 1fr 1fr
+    position: fixed
+    .info_details
+      font-size: 1.2em !important
+  .city
+    padding: 15px
+    .find_place
+      margin-left: 30px
+    .find_place,.caption
+      font-size: .8em
+    .temp_type
+      position: absolute
+      right: 20px
+      top: 25px
+    .change_city h2
+      font-size: 2em !important
+  .weather
+    max-width: 262px
+    width: 100%
+    .temp
+      font-size: 7em
+    .pic img
+      height: 100px

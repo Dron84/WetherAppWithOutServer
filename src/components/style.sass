@@ -1,0 +1,128 @@
+@import "./vars"
+@import "./media"
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'Proxima Nova Regular'
+  font-size: 16px
+  color: $fonts_color
+body
+  background-color: $bg_color
+.on_hover
+  cursor: pointer
+.contaner_wrapper
+  margin: 0 auto
+.weather_info
+  display: grid
+  width: 100%
+  justify-content: space-around
+  .info
+    font-weight: normal
+    font-size: 1.1em
+    text-align: left
+    opacity: 0.6
+  .info_details
+    font-family: "Proxima Nova Bold"
+    font-weight: normal
+    font-size: 1.9em
+    text-align: left
+.city
+  display: grid
+  grid-template-columns: 1fr 100px
+  .change_city
+    display: grid
+    grid-template-areas: 'city_headers city_headers' 'city_caption city_find_place'
+    grid-template-columns: 1fr 1fr
+    position: relative
+    h2
+      font-weight: normal
+      font-size: 3em
+      text-align: left
+      grid-area: city_headers
+    .change_city_list
+      list-style: none
+      width: 290px
+      height: 50vh
+      overflow: scroll
+      background-color: $fonts_color
+      border-radius: 5px
+      border: none
+      position: absolute
+      display: grid
+      top: 90px
+      z-index: 10000
+      li
+        font-size: 1.2em
+        color: $bg_color
+        margin: 5px
+        padding: 5px
+        &:hover
+          background-color: $bg_color
+          color: $fonts_color
+      &.hide
+        display: none
+    .caption
+      grid-area: city_caption
+      display: inline-flex
+      white-space: nowrap
+    .find_place
+      grid-area: city_find_place
+      position: relative
+      display: inline-flex
+      margin-left: 60px
+      white-space: nowrap
+      &::before
+        content: ''
+        position: absolute
+        background-image: url("/static/img/place.svg")
+        width: 20px
+        height: 20px
+        top: -3px
+        left: -25px
+
+  .temp_type
+    display: grid
+    grid-template-columns: 10px 1fr 1fr
+    width: 94px
+    height: 29px
+    align-self: end
+    z-index: 9999
+    background-color: $bg_color
+    p
+      display: grid
+      justify-content: center
+      align-content: center
+      border: 1px solid $fonts_color_transparent
+      &.c
+        border-radius: 8px 0 0 8px
+        &.active
+          background-color: $fonts_color_transparent
+      &.f
+        border-radius: 0 8px 8px 0
+        &.active
+          background-color: $fonts_color_transparent
+main.weather
+  display: grid
+  position: relative
+  //width: 475px
+  height: auto
+  margin: 0 auto
+
+  .pic
+    display: flex
+    justify-content: center
+    img
+      position: relative
+    .temp_caption
+      font-weight: normal
+      font-size: 1.2em
+      align-self: center
+  .temp
+    font-weight: normal
+    font-size: 9em
+    text-align: right
+    color: $fonts_color
+
+

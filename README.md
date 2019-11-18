@@ -1,6 +1,6 @@
 # testronasapp
 
-> Wether app for ronas
+> weather app for ronas
 
 ## Build Setup
 
