@@ -1,6 +1,7 @@
 # testronasapp
 
 > weather app for ronas
+> In this project i don't use a laravel just openweathermap.org API
 
 ## Build Setup
 

@@ -107,6 +107,7 @@
                 axios.get('http://api.openweathermap.org/data/2.5/weather?lat='+this.cords.lat+'&lon='+this.cords.lng+'&appid='+openweatherapikey+'&lang=ru')
                     .then(res=>{
                         this.tempnow = res.data
+                        this.selectedCity.name = res.data.name
                     }).catch(res=>{
                         console.warn('getWeather error', res)
                     })
