@@ -5,7 +5,8 @@
                 <h2>{{selectedCity.name}}</h2>
                 <div class="caption on_hover" @click="citybox = !citybox">Сменить город</div>
                 <ul class="change_city_list" :class="{'hide': !citybox }" >
-                    <li v-for="item in citylist" @click="selectCity(item)">{{item.name}} ({{item.regionName}})</li>
+                    <li class="search"><input type="text" v-model="findcity" autofocus></li>
+                    <li v-for="item in citylist" @click="selectCity(item)" v-if="!item.name.toLowerCase().indexOf(findcity.toLowerCase())">{{item.name}} ({{item.regionName}})</li>
                 </ul>
                 <div class="find_place on_hover" @click="getLocation()">Мое местоположение</div>
             </div>
@@ -27,7 +28,7 @@
             <div><h3 class="info">Ветер</h3><p class="info_details">{{windSpeed}} м/c, {{windDeg}}</p></div>
             <div><h3 class="info">Давление</h3><p class="info_details">{{getPressure}} мм рт. ст.</p></div>
             <div><h3 class="info">Влажность</h3><p class="info_details">{{tempnow.main.humidity}}%</p></div>
-            <div><h3 class="info">Вероятность дождя</h3><p class="info_details">{{tempnow.clouds.all}}%</p></div>
+            <div><h3 class="info">Вероятность осадков</h3><p class="info_details">{{tempnow.clouds.all}}%</p></div>
         </footer>
     </div>
 </template>
@@ -43,6 +44,7 @@
         data(){
             return{
                 temptype: true,
+                findcity: '',
                 cords: {
                     lat: 0,
                     lng: 0,
@@ -102,7 +104,7 @@
                 })
             },
             getWeather(){
-                axios.get('http://api.openweathermap.org/data/2.5/weather?lat='+this.cords.lat+'&lon='+this.cords.lng+'&appid='+openweatherapikey)
+                axios.get('http://api.openweathermap.org/data/2.5/weather?lat='+this.cords.lat+'&lon='+this.cords.lng+'&appid='+openweatherapikey+'&lang=ru')
                     .then(res=>{
                         this.tempnow = res.data
                     }).catch(res=>{
@@ -110,7 +112,7 @@
                     })
             },
             getCityWeather(){
-                axios.get('http://api.openweathermap.org/data/2.5/weather?q='+this.selectedCity.name+'&appid='+openweatherapikey)
+                axios.get('http://api.openweathermap.org/data/2.5/weather?q='+this.selectedCity.name+'&appid='+openweatherapikey+'&lang=ru')
                     .then(res=>{
                         this.tempnow = res.data
                     }).catch(res=>{
